@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/odins-gaze/static/css/main.7cb2bb6a.css",
-    "main.js": "/odins-gaze/static/js/main.cfcf9f0d.js",
+    "main.css": "/odins-gaze/static/css/main.b6243675.css",
+    "main.js": "/odins-gaze/static/js/main.60cbb75a.js",
+    "static/media/sample_img.webp": "/odins-gaze/static/media/sample_img.3ac36ce1543544bcbb7f.webp",
+    "static/media/odin-logo-colored.svg": "/odins-gaze/static/media/odin-logo-colored.825f099aa8d2bc7b394a.svg",
     "index.html": "/odins-gaze/index.html",
-    "main.7cb2bb6a.css.map": "/odins-gaze/static/css/main.7cb2bb6a.css.map",
-    "main.cfcf9f0d.js.map": "/odins-gaze/static/js/main.cfcf9f0d.js.map"
+    "static/media/icon-search.svg": "/odins-gaze/static/media/icon-search.184c1c545bd3740f45e3.svg",
+    "main.b6243675.css.map": "/odins-gaze/static/css/main.b6243675.css.map",
+    "main.60cbb75a.js.map": "/odins-gaze/static/js/main.60cbb75a.js.map"
   },
   "entrypoints": [
-    "static/css/main.7cb2bb6a.css",
-    "static/js/main.cfcf9f0d.js"
+    "static/css/main.b6243675.css",
+    "static/js/main.60cbb75a.js"
   ]
 }
