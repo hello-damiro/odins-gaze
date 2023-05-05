@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/odins-gaze/static/css/main.7cb2bb6a.css",
+    "main.js": "/odins-gaze/static/js/main.cfcf9f0d.js",
+    "index.html": "/odins-gaze/index.html",
+    "main.7cb2bb6a.css.map": "/odins-gaze/static/css/main.7cb2bb6a.css.map",
+    "main.cfcf9f0d.js.map": "/odins-gaze/static/js/main.cfcf9f0d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7cb2bb6a.css",
+    "static/js/main.cfcf9f0d.js"
+  ]
+}
