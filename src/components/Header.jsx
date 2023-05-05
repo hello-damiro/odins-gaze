@@ -8,7 +8,7 @@ function Header() {
                 <h1>Odin's Gaze</h1>
             </div>
             <div className="options">
-                <div className="timer">
+                <div>
                     Timer: <span>36s</span>
                 </div>
                 <button className="about">?</button>
