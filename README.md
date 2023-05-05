@@ -8,7 +8,11 @@ SEE LIVE WORKING APP [HERE](http://hello-damiro.github.io/odins-gaze)
 
 </br>
 
-**Day 1**:
+Ok, it's not find Waldo, its more like [hidden object game](https://en.wikipedia.org/wiki/Hidden_object_game). Basically same concept with Find Waldo. I want to be unique so bear with me. 😘
+
+</br>
+
+**Day 1**: As usual, design game interface in figma. Draft story line so that evrything I decide from this point onward will be based on this story line. Think of business logic. Create environment and research for appropriate tools to use.
 
 </br>
 
@@ -20,6 +24,19 @@ SEE LIVE WORKING APP [HERE](http://hello-damiro.github.io/odins-gaze)
 
 ![Screenshot](https://github.com/hello-damiro/odins-gaze/blob/main/src/assets/screenshot.png?raw=true)
 
+![Screenshot](https://github.com/hello-damiro/odins-gaze/blob/main/src/assets/screenshot_2.png?raw=true)
+
+![Screenshot](https://github.com/hello-damiro/odins-gaze/blob/main/src/assets/screenshot_3.png?raw=true)
+
 </br>
 
 ## Challenges
+
+1. Think about what you’ll need to do to get this all working together. This is where it’s really helpful to think it completely through on paper or whiteboard ahead of time! A few minutes of thought can save you from wasting an hour of coding.
+2. If you’re using Rails as your backend: create a new Rails application with just the bare bones required to load your HTML page for now. If you’ll be using Firebase, this is a good time to create a new Firebase project for this app, and link to the necessary scripts at the bottom of your HTML page.
+3. Build the front end functionality without actually using any calls to the back end yet. Specifically, that means creating the JavaScript functionality which pops the targeting box and dropdown menu on the screen when the user clicks on the photo and removes it when the user clicks away.
+4. Now hook up the functionality for validating with your back end whether the user has clicked in the right place for that character.
+5. Tie it into your front end so you can seamlessly select characters, validate them, and place the appropriate markers on the map if the selection was correct.
+6. Add in the ability to time the user from when they first load the page and then display their “score” (time) when they successfully identify all characters. Create a popup that asks them to enter their name for the high scores table if they have earned it.
+7. Push your solution to GitHub, Heroku, and/or Firebase Hosting and submit it below. This is a serious project, congratulations!
+8. Load many images into your database and allow the user to select from them before starting the game.
