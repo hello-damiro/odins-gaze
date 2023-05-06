@@ -13,13 +13,13 @@ function Main() {
             <div className="wrapper">
                 <div className="container">
                     <Header />
-                    {/* <ObjectList /> */}
+                    <ObjectList />
                     {/* <StoryLine /> */}
                     {/* <GetName /> */}
                     <Footer />
                 </div>
             </div>
-            <TopScoreList />
+            {/* <TopScoreList /> */}
         </>
     );
 }
