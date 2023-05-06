@@ -1,0 +1,32 @@
+@media only screen and (max-width: 515px) {
+    footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .objects-list ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        background: red;
+    }
+
+    .objects-list ul::after {
+        display: none;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .game-image {
+        height: calc(--h);
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .game-image {
+        width: 100%;
+        min-height: calc(--h);
+    }
+}
