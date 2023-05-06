@@ -1,4 +1,4 @@
-@media only screen and (max-width: 515px) {
+@media only screen and (max-width: 480px) {
     footer {
         display: flex;
         flex-direction: column;
@@ -18,13 +18,13 @@
     }
 }
 
-@media screen and (orientation: portrait) {
+@media (orientation: portrait) {
     .game-image {
         height: calc(--h);
     }
 }
 
-@media screen and (orientation: landscape) {
+@media (orientation: landscape) {
     .game-image {
         width: 100%;
         min-height: calc(--h);

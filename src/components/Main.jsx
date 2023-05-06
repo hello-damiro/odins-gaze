@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Header from './Header';
-import ObjectList from './ObjectList';
+// import ObjectList from './ObjectList';
+// import StoryLine from './StoryLine';
+// import GetName from './GetName';
 import Footer from './Footer';
-import GetName from './GetName';
-import StoryLine from './StoryLine';
-import TopScoreList from './TopScoreList';
+// import TopScoreList from './TopScoreList';
 
 function Main() {
     return (
@@ -13,7 +13,7 @@ function Main() {
             <div className="wrapper">
                 <div className="container">
                     <Header />
-                    <ObjectList />
+                    {/* <ObjectList /> */}
                     {/* <StoryLine /> */}
                     {/* <GetName /> */}
                     <Footer />
