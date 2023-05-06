@@ -1,7 +1,7 @@
 export const sceneGarage = [
     {
         id: 1,
-        object: 'fire extinguisher',
+        name: 'fire extinguisher',
         x: 21.5,
         y: 38,
         width: 2.5,
@@ -9,7 +9,7 @@ export const sceneGarage = [
     },
     {
         id: 2,
-        object: 'handcuffs',
+        name: 'handcuffs',
         x: 39.5,
         y: 85,
         width: 7.5,
@@ -17,7 +17,7 @@ export const sceneGarage = [
     },
     {
         id: 3,
-        object: 'plastic cup',
+        name: 'plastic cup',
         x: 86.5,
         y: 92,
         width: 5,
@@ -25,7 +25,7 @@ export const sceneGarage = [
     },
     {
         id: 4,
-        object: 'shuttle cock',
+        name: 'shuttle cock',
         x: 63,
         y: 92,
         width: 4.5,
@@ -33,7 +33,7 @@ export const sceneGarage = [
     },
     {
         id: 5,
-        object: 'hatchet',
+        name: 'hatchet',
         x: 23,
         y: 56,
         width: 3.2,
@@ -41,7 +41,7 @@ export const sceneGarage = [
     },
     {
         id: 6,
-        object: 'spring',
+        name: 'spring',
         x: 70,
         y: 71.5,
         width: 5.5,
@@ -49,7 +49,7 @@ export const sceneGarage = [
     },
     {
         id: 7,
-        object: 'dynamite',
+        name: 'dynamite',
         x: 50,
         y: 30,
         width: 5,
@@ -57,7 +57,7 @@ export const sceneGarage = [
     },
     {
         id: 8,
-        object: 'clothes hanger',
+        name: 'clothes hanger',
         x: 83.5,
         y: 47,
         width: 9,
@@ -65,7 +65,7 @@ export const sceneGarage = [
     },
     {
         id: 9,
-        object: 'megaphone',
+        name: 'megaphone',
         x: 73,
         y: 58,
         width: 5.3,
@@ -73,7 +73,7 @@ export const sceneGarage = [
     },
     {
         id: 10,
-        object: 'granade',
+        name: 'granade',
         x: 12,
         y: 79,
         width: 6.5,
@@ -81,7 +81,7 @@ export const sceneGarage = [
     },
     {
         id: 11,
-        object: 'gas lamp',
+        name: 'gas lamp',
         x: 40,
         y: 30,
         width: 2.7,
@@ -89,7 +89,7 @@ export const sceneGarage = [
     },
     {
         id: 12,
-        object: 'screw driver',
+        name: 'screw driver',
         x: 65.5,
         y: 44.5,
         width: 5.5,
@@ -97,7 +97,7 @@ export const sceneGarage = [
     },
     {
         id: 13,
-        object: 'pocket knife',
+        name: 'pocket knife',
         x: 14.2,
         y: 96,
         width: 9.7,
@@ -105,7 +105,7 @@ export const sceneGarage = [
     },
     {
         id: 14,
-        object: 'pizza',
+        name: 'pizza',
         x: 86,
         y: 66,
         width: 5,
@@ -113,7 +113,7 @@ export const sceneGarage = [
     },
     {
         id: 15,
-        object: 'gas mask',
+        name: 'gas mask',
         x: 44,
         y: 39,
         width: 3.5,

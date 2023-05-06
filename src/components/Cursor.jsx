@@ -3,7 +3,7 @@ import React, { useState, useLayoutEffect } from 'react';
 function Cursor() {
     const [pos, setPos] = useState({ x: 0, y: 0 });
     const handleMouseMove = (e) => {
-        setPos({ x: e.clientX, y: e.clientY });
+        setPos({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
     };
 
     useLayoutEffect(() => {

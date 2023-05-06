@@ -14,13 +14,7 @@ function Canvas() {
                 <Cursor />
                 <div className="markers">
                     {sceneGarage.map((object) => (
-                        <Object
-                            key={object.id}
-                            x={object.x}
-                            y={object.y}
-                            width={object.width}
-                            height={object.height}
-                        />
+                        <Object key={object.id} object={object} />
                     ))}
                 </div>
                 <ObjectImage img={img} blur={0} />
