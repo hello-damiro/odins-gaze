@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
-// import ObjectList from './ObjectList';
+import ObjectList from './ObjectList';
 // import StoryLine from './StoryLine';
 // import GetName from './GetName';
 import Footer from './Footer';
@@ -13,7 +13,7 @@ function Main() {
             <div className="wrapper">
                 <div className="container">
                     <Header />
-                    {/* <ObjectList /> */}
+                    <ObjectList />
                     {/* <StoryLine /> */}
                     {/* <GetName /> */}
                     <Footer />
