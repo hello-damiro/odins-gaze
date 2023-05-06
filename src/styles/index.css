@@ -21,7 +21,7 @@
 
     /* Given image should strictly be 1512 x 982 pixels */
     --h: calc(100vh - 22px);
-    --contain-w: 720px;
+    --contain-w: 1080px;
 }
 
 a {
@@ -68,6 +68,11 @@ main {
     object-fit: cover;
 }
 
+.blur {
+    filter: blur(100px);
+    transition: all s ease-in-out;
+}
+
 .wrapper {
     position: fixed;
     width: 100%;
@@ -93,7 +98,7 @@ header {
     justify-content: space-between;
     padding: 18px;
     background-color: var(--yellow-bg);
-    border-radius: 100px;
+    border-radius: 6px;
     margin-top: 64px;
 }
 
@@ -106,7 +111,7 @@ header .logo-title {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    margin-left: 24px;
+    margin-left: 12px;
     color: var(--blue);
 }
 
@@ -142,7 +147,6 @@ header .options .about {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    /* filter: blur(100px); */
 }
 
 footer {
@@ -156,7 +160,7 @@ footer {
     gap: 0px;
     margin-inline: auto;
     padding: 16px 24px;
-    border-radius: 0 0 24px 24px;
+    border-radius: 0 0 6px 6px;
     background-color: var(--blue-bg);
     color: var(--green);
     font-size: 0.7rem;
@@ -190,7 +194,7 @@ footer .copyright {
     letter-spacing: 0.1rem;
     background-color: var(--blue-bg);
     padding: 12px 16px 12px 32px;
-    border-radius: 32px;
+    border-radius: 6px;
     /* gap: 32px; */
 }
 
@@ -221,10 +225,9 @@ footer .copyright {
     justify-content: space-between;
     gap: 24px;
     margin-top: 16px;
-    border-radius: 42px;
+    border-radius: 6px;
     background-color: var(--blue-bg);
     padding: 32px;
-    border-radius: 32px;
 }
 
 .stroy-line em {
@@ -234,7 +237,7 @@ footer .copyright {
 input {
     border-radius: 42px;
     width: 100%;
-    padding: 18px 32px;
+    padding: 16px 32px;
     background-color: var(--blue-bg);
     color: var(--yellow);
 }
@@ -262,7 +265,7 @@ button {
 button.primary {
     background-color: var(--yellow);
     color: var(--blue);
-    padding: 18px 32px;
+    padding: 16px 32px;
     border-radius: 42px;
 }
 
@@ -276,4 +279,53 @@ button.secondary {
 
 button.secondary:hover {
     color: var(--white);
+}
+
+.score-list {
+    position: absolute;
+    top: 170px;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 64px;
+}
+
+.score-list-title {
+    max-width: var(--contain-w);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px auto;
+}
+
+.score-list-title h2 {
+    font-size: 2rem;
+}
+
+.score-item {
+    max-width: var(--contain-w);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--blue-bg);
+    color: var(--gray);
+    padding: 6px 24px;
+    border-radius: 6px;
+}
+
+.score-item:hover {
+    background: var(--gray);
+    color: var(--blue);
+}
+
+.score-item .name-num {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
 }

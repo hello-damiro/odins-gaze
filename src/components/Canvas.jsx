@@ -6,7 +6,7 @@ import img from '../assets/sample_img.webp';
 function Canvas() {
     return (
         <main>
-            <div className="game-image">
+            <div className="game-image blur">
                 <img src={img} alt="sample" />
             </div>
         </main>

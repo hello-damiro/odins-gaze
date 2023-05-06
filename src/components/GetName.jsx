@@ -7,7 +7,7 @@ function GetName() {
     };
     return (
         <div className="get-name">
-            <input type="text" placeholder="Enter your name" />
+            <input type="text" placeholder="Enter name to Play" />
             <button onSubmit={handleSubmit} className="primary">
                 Submit
             </button>

@@ -16,10 +16,7 @@ function StoryLine() {
                 remained hidden otherwise. Can you find all the hidden objects and solve the puzzles
                 to become the ultimate seeker? The power of Odin's Gaze is in your hands.
             </p>
-            <div className="button-group">
-                <button className="secondary">Top Score</button>
-                <button className="primary">Play</button>
-            </div>
+            <button className="secondary">View Top Score</button>
         </div>
     );
 }
