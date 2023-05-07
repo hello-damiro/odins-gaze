@@ -1,24 +1,31 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Cursor() {
-    const [pos, setPos] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [follow, setFollow] = useState(true);
     const handleMouseMove = (e) => {
-        setPos({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
+        setPosition({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
+    };
+    const handleMouseClick = (e) => {
+        setPosition({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
+        setFollow((prevValue) => !prevValue);
     };
 
-    useLayoutEffect(() => {
-        window.addEventListener('mousemove', handleMouseMove);
+    useEffect(() => {
+        if (follow) window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('click', handleMouseClick);
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('click', handleMouseClick);
         };
-    }, [pos]);
+    }, [setPosition, setFollow, follow]);
 
     return (
         <div
             className="cursor"
             style={{
-                left: `${pos.x}px`,
-                top: `${pos.y}px`,
+                left: `${position.x}px`,
+                top: `${position.y}px`,
             }}
         />
     );
