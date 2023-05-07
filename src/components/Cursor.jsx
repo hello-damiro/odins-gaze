@@ -4,8 +4,8 @@ import { round } from './helper/CommonFunctions';
 
 function Cursor() {
     const img = document.querySelector('.game-image');
-    const vw = img.clientWidth;
-    const vh = img.clientHeight;
+    const vw = img ? img.clientWidth : 0;
+    const vh = img ? img.clientHeight : 0;
 
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [follow, setFollow] = useState(true);

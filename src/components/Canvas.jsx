@@ -3,12 +3,18 @@ import Object from './Object';
 import ObjectImage from './ObjectImage';
 import { sceneGarage } from '../data/SceneGarage';
 import { useCursorPosition } from './hooks/CursorPositionContext';
+// import { pickRandomNumbers } from './helper/CommonFunctions';
 
 // Image should be strictly 1512 x 982 pixels
 import image from '../assets/sample_img.webp';
 
 function Canvas() {
     const cursorPosition = useCursorPosition();
+    // const randomNumbers = pickRandomNumbers(3, sceneGarage.length);
+
+    // const filteredObjects = sceneGarage.filter((object) => {
+    //     return randomNumbers.includes(object.id);
+    // });
 
     const mapObjects = sceneGarage.map((object, index) => ({
         id: index,
@@ -32,10 +38,13 @@ function Canvas() {
     };
 
     useEffect(() => {
-        mapObjects.forEach((object) => {
-            if (checkClickWithinObject(object.bounds, cursorPosition)) {
-                console.log(`Mouse clicked on ${object.name} with id ${object.id}`);
-            }
+        // console.log(filteredObjects);
+        const clickedObjects = mapObjects.filter((object) => {
+            return checkClickWithinObject(object.bounds, cursorPosition);
+        });
+
+        clickedObjects.forEach((object) => {
+            console.log(`Mouse clicked on ${object.name} with id ${object.id}`);
         });
     }, [cursorPosition, mapObjects]);
 
