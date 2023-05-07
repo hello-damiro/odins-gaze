@@ -1,8 +1,7 @@
 import React from 'react';
 import Object from './Object';
-import { sceneGarage } from '../data/SceneGarage';
-import Cursor from './Cursor';
 import ObjectImage from './ObjectImage';
+import { sceneGarage } from '../data/SceneGarage';
 
 // Image should be strictly 1512 x 982 pixels
 import img from '../assets/sample_img.webp';
@@ -10,8 +9,7 @@ import img from '../assets/sample_img.webp';
 function Canvas() {
     return (
         <main>
-            <div className="game-image ">
-                <Cursor />
+            <div onClick={() => console.log('img clicked')} className="game-image ">
                 <div className="markers">
                     {sceneGarage.map((object) => (
                         <Object key={object.id} object={object} />
