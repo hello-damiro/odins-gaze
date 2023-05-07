@@ -12,7 +12,7 @@ function Object({ object }) {
                 height: `${object.height}%`,
             }}
             onClick={() => {
-                console.log('Object', object.name);
+                console.log('OBJECT', object.left, object.top);
             }}
         />
     );

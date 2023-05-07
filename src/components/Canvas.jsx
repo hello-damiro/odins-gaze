@@ -5,14 +5,11 @@ import { sceneGarage } from '../data/SceneGarage';
 import { useCursorPosition } from './hooks/CursorPositionContext';
 
 // Image should be strictly 1512 x 982 pixels
-import img from '../assets/sample_img.webp';
+import image from '../assets/sample_img.webp';
 
 function Canvas() {
     const cursorPosition = useCursorPosition();
-
-    useEffect(() => {
-        console.log('FROM CANVAS', cursorPosition);
-    }, [cursorPosition]);
+    useEffect(() => {}, [cursorPosition]);
 
     return (
         <main>
@@ -22,7 +19,7 @@ function Canvas() {
                         <Object key={object.id} object={object} />
                     ))}
                 </div>
-                <ObjectImage img={img} blur={0} />
+                <ObjectImage img={image} blur={0} />
             </div>
         </main>
     );

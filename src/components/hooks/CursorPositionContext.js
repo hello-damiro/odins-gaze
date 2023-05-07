@@ -13,7 +13,6 @@ export function useCursorPositionUpdate() {
 
 function CursorPositionProvider({ children }) {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-
     return (
         <CursorPositionContext.Provider value={cursorPosition}>
             <CursorPositionContextUpdate.Provider value={setCursorPosition}>
