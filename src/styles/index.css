@@ -84,12 +84,15 @@ main {
 
 .marker {
     position: absolute;
-    background: var(--white-mark);
-    color: var(--blue);
+    /* background: var(--white-mark); */
+    /* color: var(--blue); */
     display: flex;
     align-items: center;
     justify-content: center;
     /* cursor: pointer; */
+    outline: 2px dashed var(--white);
+    outline-offset: 12px;
+    border-radius: 8px;
 }
 
 .cursor {

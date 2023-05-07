@@ -10,15 +10,19 @@ import image from '../assets/sample_img.webp';
 function Canvas() {
     const cursorPosition = useCursorPosition();
 
-    const objectBounds = {
-        xStart: 23,
-        xStop: 26.2,
-        yStart: 56,
-        yStop: 67.5,
-    };
+    const mapObjects = sceneGarage.map((object, index) => ({
+        id: index,
+        name: object.name,
+        bounds: {
+            xStart: object.x,
+            yStart: object.y,
+            xStop: object.x + object.width,
+            yStop: object.y + object.height,
+        },
+    }));
 
-    const checkClickWithinObject = (obj, cursorPos) => {
-        const { xStart, xStop, yStart, yStop } = objectBounds;
+    const checkClickWithinObject = (objectBound, cursorPos) => {
+        const { xStart, xStop, yStart, yStop } = objectBound;
         const { x, y } = cursorPos;
         if (x >= xStart && x <= xStop && y >= yStart && y <= yStop) {
             return true;
@@ -28,9 +32,12 @@ function Canvas() {
     };
 
     useEffect(() => {
-        const isWithinBounds = checkClickWithinObject(objectBounds, cursorPosition);
-        console.log('BOUNDS', isWithinBounds);
-    }, [cursorPosition, objectBounds]);
+        mapObjects.forEach((object) => {
+            if (checkClickWithinObject(object.bounds, cursorPosition)) {
+                console.log(`Mouse clicked on ${object.name} with id ${object.id}`);
+            }
+        });
+    }, [cursorPosition, mapObjects]);
 
     return (
         <main>
