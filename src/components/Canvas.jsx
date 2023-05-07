@@ -9,7 +9,28 @@ import image from '../assets/sample_img.webp';
 
 function Canvas() {
     const cursorPosition = useCursorPosition();
-    useEffect(() => {}, [cursorPosition]);
+
+    const objectBounds = {
+        xStart: 23,
+        xStop: 26.2,
+        yStart: 56,
+        yStop: 67.5,
+    };
+
+    const checkClickWithinObject = (obj, cursorPos) => {
+        const { xStart, xStop, yStart, yStop } = objectBounds;
+        const { x, y } = cursorPos;
+        if (x >= xStart && x <= xStop && y >= yStart && y <= yStop) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    useEffect(() => {
+        const isWithinBounds = checkClickWithinObject(objectBounds, cursorPosition);
+        console.log('BOUNDS', isWithinBounds);
+    }, [cursorPosition, objectBounds]);
 
     return (
         <main>

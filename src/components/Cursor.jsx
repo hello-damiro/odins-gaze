@@ -12,14 +12,13 @@ function Cursor() {
     const cursorPositionUpdate = useCursorPositionUpdate();
 
     const handleMouseMove = (e) => {
-        // setPosition({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
         setPosition({ x: e.clientX, y: e.clientY });
     };
 
     const handleClick = (e) => {
         const ex = e.clientX + window.pageXOffset;
         const ey = e.clientY + window.pageYOffset;
-        // convert px to %
+        // convert px to % ref to img
         const cursorPercent = { x: round((ex * 100) / vw, 1), y: round((ey * 100) / vh, 1) };
         console.log('CURSOR', cursorPercent.x, cursorPercent.y);
         cursorPositionUpdate(cursorPercent);
