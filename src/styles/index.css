@@ -110,6 +110,11 @@ main {
     /* pointer-events: none; */
 }
 
+.tooltip {
+    position: absolute;
+    z-index: -2;
+}
+
 img {
     transition: all 1s ease-in-out;
 }

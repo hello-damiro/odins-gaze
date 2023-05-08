@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
-import { sceneGarage } from '../data/SceneGarage';
 import { useCursorPosition } from './hooks/CursorPositionContext';
 import { pickRandomNumbers } from './helper/CommonFunctions';
 
 // Image should be strictly 1512 x 982 pixels
 import image from '../assets/sample_img.webp';
+// Object Data from the Image
+import { sceneGarage } from '../data/SceneGarage';
 
 function Canvas() {
-    const cursorPosition = useCursorPosition();
+    const cursor = useCursorPosition().percent;
     const [pickedObjects, setPickedObjects] = useState([]);
 
     const checkClickWithinObject = (objectBound, cursorPos) => {
@@ -41,13 +42,14 @@ function Canvas() {
     }, []);
 
     useEffect(() => {
+        console.log(cursor);
         const clickedObjects = pickedObjects.filter((object) => {
-            return checkClickWithinObject(object.bounds, cursorPosition);
+            return checkClickWithinObject(object.bounds, cursor);
         });
         clickedObjects.forEach((object) => {
             console.log(`Mouse clicked on ${object.name} with id ${object.id}`);
         });
-    }, [cursorPosition, pickedObjects]);
+    }, [cursor, pickedObjects]);
 
     return (
         <main>

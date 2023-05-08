@@ -16,7 +16,7 @@ Ok, it's not find Waldo, its more like [hidden object game](https://en.wikipedia
 
 **Day 2**: From this project onwards, my works should live in any type of screensize. Struggled with game image positioning with CSS. Considering that viewport size is literally different in every users, it felt theres no other way but to use percentage unit to adapt the items location in any situation.
 
-**Day 3**: Solved the click events on image only. Always forgot that divs or any element works in layers.
+**Day 3**: Solved the click events on image only. Always forgot that divs or any element works in layers. Getting comfortable with the use of `useContext` on its provider and its consumer sides. I dont think I need to use `useReducer` this time. But who knows, lets see on the upcomming days.
 
 </br>
 
