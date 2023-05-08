@@ -1,31 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
 import { sceneGarage } from '../data/SceneGarage';
 import { useCursorPosition } from './hooks/CursorPositionContext';
-// import { pickRandomNumbers } from './helper/CommonFunctions';
+import { pickRandomNumbers } from './helper/CommonFunctions';
 
 // Image should be strictly 1512 x 982 pixels
 import image from '../assets/sample_img.webp';
 
 function Canvas() {
     const cursorPosition = useCursorPosition();
-    // const randomNumbers = pickRandomNumbers(3, sceneGarage.length);
-
-    // const filteredObjects = sceneGarage.filter((object) => {
-    //     return randomNumbers.includes(object.id);
-    // });
-
-    const mapObjects = sceneGarage.map((object, index) => ({
-        id: index,
-        name: object.name,
-        bounds: {
-            xStart: object.x,
-            yStart: object.y,
-            xStop: object.x + object.width,
-            yStop: object.y + object.height,
-        },
-    }));
+    const [pickedObjects, setPickedObjects] = useState([]);
 
     const checkClickWithinObject = (objectBound, cursorPos) => {
         const { xStart, xStop, yStart, yStop } = objectBound;
@@ -38,21 +23,37 @@ function Canvas() {
     };
 
     useEffect(() => {
-        // console.log(filteredObjects);
-        const clickedObjects = mapObjects.filter((object) => {
+        const randomNumbers = pickRandomNumbers(3, sceneGarage.length);
+        const filteredObjects = sceneGarage.filter((object) => {
+            return randomNumbers.includes(object.id);
+        });
+        const mapObjects = filteredObjects.map((object, index) => ({
+            id: index,
+            name: object.name,
+            bounds: {
+                xStart: object.x,
+                yStart: object.y,
+                xStop: object.x + object.width,
+                yStop: object.y + object.height,
+            },
+        }));
+        setPickedObjects(mapObjects);
+    }, []);
+
+    useEffect(() => {
+        const clickedObjects = pickedObjects.filter((object) => {
             return checkClickWithinObject(object.bounds, cursorPosition);
         });
-
         clickedObjects.forEach((object) => {
             console.log(`Mouse clicked on ${object.name} with id ${object.id}`);
         });
-    }, [cursorPosition, mapObjects]);
+    }, [cursorPosition, pickedObjects]);
 
     return (
         <main>
             <div className="game-image ">
                 <div className="markers">
-                    {sceneGarage.map((object) => (
+                    {pickedObjects.map((object) => (
                         <Object key={object.id} object={object} />
                     ))}
                 </div>

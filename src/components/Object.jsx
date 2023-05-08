@@ -2,31 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Object({ object }) {
+    const bound = object.bounds;
     return (
         <div
             className="marker"
             style={{
-                left: `${object.x}%`,
-                top: `${object.y}%`,
-                width: `${object.width}%`,
-                height: `${object.height}%`,
+                left: `${bound.xStart}%`,
+                top: `${bound.yStart}%`,
+                width: `${bound.xStop - bound.xStart}%`,
+                height: `${bound.yStop - bound.yStart}%`,
             }}
             onClick={() => {
-                console.log('OBJECT', object.left, object.top);
+                console.log('OBJECT', bound.xStart, bound.yStart);
             }}
         />
     );
 }
 
 Object.propTypes = {
-    object: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-    }),
+    object: PropTypes.object,
 };
 
 export default Object;

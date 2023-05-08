@@ -90,7 +90,7 @@ main {
     align-items: center;
     justify-content: center;
     /* cursor: pointer; */
-    outline: 2px dashed #ffffff66;
+    outline: 2px dashed #ffffff;
     outline-offset: 12px;
     border-radius: 8px;
 }
