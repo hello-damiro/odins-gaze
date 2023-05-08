@@ -90,6 +90,9 @@ main {
     align-items: center;
     justify-content: center;
     /* cursor: pointer; */
+}
+
+.marker.show {
     outline: 2px dashed #ffffff;
     outline-offset: 12px;
     border-radius: 8px;

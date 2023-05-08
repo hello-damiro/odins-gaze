@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Object({ object }) {
+function Object({ object, show }) {
     const bound = object.bounds;
     return (
         <div
-            className="marker"
+            className={`marker ${show ? 'show' : ''}`}
             style={{
                 left: `${bound.xStart}%`,
                 top: `${bound.yStart}%`,
@@ -19,8 +19,13 @@ function Object({ object }) {
     );
 }
 
+Object.defaultProps = {
+    show: false,
+};
+
 Object.propTypes = {
     object: PropTypes.object,
+    show: PropTypes.bool,
 };
 
 export default Object;
