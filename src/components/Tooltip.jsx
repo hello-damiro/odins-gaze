@@ -1,12 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { useCursorPosition } from './hooks/CursorPositionContext';
 
 function Tooltip() {
-    const cursor = useCursorPosition().pixel;
-    useEffect(() => {}, [cursor]);
+    const cursorPx = useCursorPosition().pixel;
+    const cursorPc = useCursorPosition().percent;
+    const cursorVp = useCursorPosition().viewport;
+
+    const [tipClass, setTipClass] = useState('');
+    const [toggle, setToggle] = useState(false);
+
+    useLayoutEffect(() => {
+        const vert = cursorVp.y < 50 ? 'top' : 'bottom';
+        const hori = cursorVp.x < 50 ? 'left' : 'right';
+        setTipClass(`tooltip ${vert} ${hori}`);
+    }, [cursorVp]);
+
+    if (!toggle) {
+        return null;
+    }
     return (
-        <div className="tooltip " style={{ left: `${cursor.x}px`, top: `${cursor.y}px` }}>
-            {cursor.x} / {cursor.y}
+        <div className={tipClass} style={{ left: `${cursorPx.x}px`, top: `${cursorPx.y}px` }}>
+            <h4>Select Object</h4>
+            <button className="tip">WIN X: {cursorVp.x}</button>
+            <button className="tip">WIN Y: {cursorVp.y}</button>
+            <button className="tip">
+                {cursorPc.x} / {cursorPc.y}
+            </button>
         </div>
     );
 }
