@@ -52,12 +52,14 @@ body {
 }
 
 main {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: calc((var(--h) * 1512) / 982);
     min-height: var(--h);
     z-index: 1;
+    overflow: hidden;
 }
 
 .game-image {
@@ -100,7 +102,7 @@ main {
 
 .cursor {
     position: absolute;
-    z-index: -2;
+    z-index: 1;
     left: 100px;
     top: 100px;
     width: 5%;
@@ -116,7 +118,7 @@ main {
 .tooltip {
     --offset: 5%;
     position: absolute;
-    z-index: 11;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -151,7 +153,7 @@ img {
 .wrapper {
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 2;
     padding: 16px;
 }
 

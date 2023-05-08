@@ -6,7 +6,6 @@ import ObjectList from './ObjectList';
 // import GetName from './GetName';
 import Footer from './Footer';
 // import TopScoreList from './TopScoreList';
-import Cursor from './Cursor';
 
 function Main() {
     return (
@@ -14,7 +13,6 @@ function Main() {
             <div className="wrapper">
                 <div className="container">
                     <Header />
-                    <Cursor />
                     <ObjectList />
                     {/* <StoryLine /> */}
                     {/* <GetName /> */}
