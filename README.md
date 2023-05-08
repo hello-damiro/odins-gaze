@@ -14,6 +14,10 @@ Ok, it's not find Waldo, its more like [hidden object game](https://en.wikipedia
 
 **Day 1**: As usual, design game interface in figma. Draft story line so that evrything I decide from this point onward will be based on this story line. Think of business logic. Create environment and research for appropriate tools to use.
 
+**Day 2**: From this project onwards, my works should live in any type of screensize. Struggled with game image positioning with CSS. Considering that viewport size is literally different in every users, it felt theres no other way but to use percentage unit to adapt the items location in any situation.
+
+**Day 3**: Solved the click events on image only. Always forgot that divs or any element works in layers.
+
 </br>
 
 ## Hooks Used
