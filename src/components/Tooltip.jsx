@@ -7,7 +7,7 @@ function Tooltip() {
     const cursorVp = useCursorPosition().viewport;
 
     const [tipClass, setTipClass] = useState('');
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
 
     useLayoutEffect(() => {
         const vert = cursorVp.y < 50 ? 'top' : 'bottom';

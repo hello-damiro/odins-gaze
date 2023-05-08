@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
+import Tooltip from './Tooltip';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
 import { useCursorPosition } from './hooks/CursorPositionContext';
@@ -62,6 +63,7 @@ function Canvas() {
     return (
         <main>
             <div className="game-image ">
+                <Tooltip />
                 <div className="markers">
                     {objectState.map((object) => (
                         <Object key={object.id} object={object} show={object.shown} />

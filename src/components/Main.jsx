@@ -7,7 +7,6 @@ import ObjectList from './ObjectList';
 import Footer from './Footer';
 // import TopScoreList from './TopScoreList';
 import Cursor from './Cursor';
-import Tooltip from './Tooltip';
 
 function Main() {
     return (
@@ -16,7 +15,6 @@ function Main() {
                 <div className="container">
                     <Header />
                     <Cursor />
-                    <Tooltip />
                     <ObjectList />
                     {/* <StoryLine /> */}
                     {/* <GetName /> */}
