@@ -1,12 +1,14 @@
 import React from 'react';
+import { usePickedObjects } from './hooks/PickedObjectsContext';
 
 function ObjectList() {
+    const objects = usePickedObjects().lost;
     return (
         <div className="objects-list">
             <ul>
-                <li>handcuffs</li>
-                <li>wrist watch</li>
-                <li>gloves</li>
+                {objects.map((object) => (
+                    <li key={object.id}>{object.name}</li>
+                ))}
             </ul>
         </div>
     );

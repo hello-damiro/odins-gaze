@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import Tooltip from './Tooltip';
 import Cursor from './Cursor';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
+import { pickRandomNumbers } from './helper/CommonFunctions';
 import { useCursorPosition, useCursorPositionUpdate } from './hooks/CursorPositionContext';
 import { useCursorFollowUpdate } from './hooks/CursorFollowContext';
-import { pickRandomNumbers } from './helper/CommonFunctions';
-import { objectsReducer } from './hooks/ObjectsReducer';
-import { ACTIONS } from './hooks/ObjectsReducer';
+import { usePickedObjects, usePickedObjectsUpdate } from './hooks/PickedObjectsContext';
 
 // Image should be strictly 1512 x 982 pixels
 import image from '../assets/sample_img.webp';
@@ -18,8 +17,9 @@ function Canvas() {
     const cursor = useCursorPosition().percent;
     const cursorUpdate = useCursorPositionUpdate();
     const cursorFollowUpdate = useCursorFollowUpdate();
-    const [pickedObjects, setPickedObjects] = useState([]);
-    const [objectState, dispatch] = useReducer(objectsReducer, []);
+
+    const objects = usePickedObjects();
+    const setObjects = usePickedObjectsUpdate();
 
     const handleClick = () => {
         cursorUpdate({ x: window.clientX, y: window.clientY });
@@ -53,20 +53,19 @@ function Canvas() {
             },
         }));
         console.log(mapObjects);
-        setPickedObjects(mapObjects);
+        setObjects.setLost(mapObjects);
     }, []);
 
     useEffect(() => {
-        const clickedObjects = pickedObjects.filter((object) => {
-            return checkClickWithinBounds(object.bounds, cursor);
-        });
-        clickedObjects.forEach((object) => {
-            console.log(`Mouse clicked on ${object.name} with id ${object.id}`);
-        });
-        if (clickedObjects.length > 0) {
-            dispatch({ type: ACTIONS.ADD, payload: clickedObjects[0] });
+        const clickedObject = objects.lost.find((object) =>
+            checkClickWithinBounds(object.bounds, cursor)
+        );
+        if (clickedObject) {
+            setObjects.setClick(clickedObject.id);
+        } else {
+            setObjects.setClick(null);
         }
-    }, [cursor, pickedObjects, objectState]);
+    }, [cursor, objects, setObjects]);
 
     return (
         <main>
@@ -74,7 +73,7 @@ function Canvas() {
             <Tooltip />
             <div className="game-image" onClick={handleClick}>
                 <div className="markers">
-                    {objectState.map((object) => (
+                    {objects.found.map((object) => (
                         <Object key={object.id} object={object} show={object.shown} />
                     ))}
                 </div>

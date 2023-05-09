@@ -13,7 +13,6 @@ function Cursor() {
     };
 
     const handleClick = (e) => {
-        console.log('Cursor clicked');
         cursorPositionUpdate({ x: e.clientX, y: e.clientY });
         cursorFollowUpdate(false);
     };
