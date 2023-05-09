@@ -20,11 +20,21 @@ function PickedObjectsProvider({ children }) {
     const [found, dispatch] = useReducer(objectsReducer, []);
 
     const reveal = () => {
-        console.log(found, ' vs ', tip);
         if (click === tip && click !== null) {
             const object = lost.find((object) => object.id === tip);
             dispatch({ type: ACTIONS.ADD, payload: object });
         }
+        if (found.length === lost.length && found.length > 0) {
+            console.log('Game over');
+            reset();
+        }
+    };
+
+    const reset = () => {
+        dispatch({ type: ACTIONS.CLEAR });
+        setLost([]);
+        setTip(null);
+        setClick(null);
     };
 
     return (

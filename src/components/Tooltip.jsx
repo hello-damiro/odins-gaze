@@ -23,7 +23,7 @@ function Tooltip() {
         setObjects.setTip(currentID);
         objects.reveal();
         setCurrentID(null);
-    }, [currentID]);
+    }, [currentID, objects, setObjects]);
 
     useLayoutEffect(() => {
         const vert = cursorVp.y < 50 ? 'top' : 'bottom';
