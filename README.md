@@ -18,9 +18,16 @@ Ok, it's not find Waldo, its more like [hidden object game](https://en.wikipedia
 
 **Day 3**: Solved the click events on image only. Always forgot that divs or any element works in layers. Getting comfortable with the use of `useContext` on its provider and its consumer sides. I dont think I need to use `useReducer` this time. But who knows, lets see on the upcomming days.
 
+**Day 4**: Finished the game. But needs to add the features that will comply to the challenges. I ended up using `useReducer`. I feel I can do the code without using `useReducer`, but I use it anyway just for the sake of using it. I need to experience implementing these hooks for me to fully grasp it, specially the usecase of each hooks. Needs to finish the client side before I even attempt to start implementing the _BaaS_. Timer, game scene selection and pop-up modals/navigation. I'd probably start with the timer tomorrow since it has the direct connection with the game objects. Needs to focus more.
+
 </br>
 
 ## Hooks Used
+
+-   [x] useEffect
+-   [x] useState
+-   [x] useContext
+-   [x] useReducer
 
 </br>
 
