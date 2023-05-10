@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import Tooltip from './Tooltip';
 import Cursor from './Cursor';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
 import { pickRandomNumbers } from './helper/CommonFunctions';
-import { useCursor, useCursorUpdate } from './hooks/CursorContext';
-import { useObjects, useObjectsUpdate } from './hooks/ObjectsContext';
+import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
+import { useObjects, useObjectsUpdate } from './hooks/ObjectsProvider';
 
 // Image should be strictly 1512 x 982 pixels
 import image from '../assets/sample_img.webp';
 // Object Data from the Image
 import { sceneGarage } from '../data/SceneGarage';
+import { useGame } from './hooks/GameProvider';
 
 function Canvas() {
     const cursor = useCursor().percent;
@@ -18,6 +19,8 @@ function Canvas() {
 
     const objects = useObjects();
     const setObjects = useObjectsUpdate();
+
+    const game = useGame();
 
     const handleClick = () => {
         cursorUpdate.setPosition({ x: window.clientX, y: window.clientY });
@@ -34,7 +37,7 @@ function Canvas() {
         }
     };
 
-    useEffect(() => {
+    const setGame = useCallback(() => {
         const randomNumbers = pickRandomNumbers(3, sceneGarage.length);
         const filteredObjects = sceneGarage.filter((object) => {
             return randomNumbers.includes(object.id);
@@ -52,10 +55,16 @@ function Canvas() {
         }));
         console.log(mapObjects);
         setObjects.setLost(mapObjects);
-        setObjects.setTimed(true);
+        if (game.on) setObjects.setTimed(true);
+    }, [game, setObjects]);
+
+    useEffect(() => {
+        setGame(false);
+        console.log('yah here?');
     }, []);
 
     useEffect(() => {
+        if (game.on) setGame(true);
         const clickedObject = objects.lost.find((object) =>
             checkClickWithinBounds(object.bounds, cursor)
         );
@@ -64,7 +73,7 @@ function Canvas() {
         } else {
             setObjects.setClick(null);
         }
-    }, [cursor, objects, setObjects]);
+    }, [cursor, objects, setObjects, game.on, setGame]);
 
     return (
         <main>
@@ -76,7 +85,7 @@ function Canvas() {
                         <Object key={object.id} object={object} show={object.shown} />
                     ))}
                 </div>
-                <ObjectImage img={image} blur={0} />
+                <ObjectImage img={image} blur={game.on ? 0 : 100} />
             </div>
         </main>
     );

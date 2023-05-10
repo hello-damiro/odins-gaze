@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useObjects, useObjectsUpdate } from './hooks/ObjectsContext';
+import { useObjects, useObjectsUpdate } from './hooks/ObjectsProvider';
 
 function Header() {
     const object = useObjects();

@@ -1,28 +1,32 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useCursor, useCursorUpdate } from './hooks/CursorContext';
-import { useObjects, useObjectsUpdate } from './hooks/ObjectsContext';
+import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
+import { useObjects, useObjectsUpdate } from './hooks/ObjectsProvider';
+import { useGame } from './hooks/GameProvider';
 
 function Tooltip() {
+    const cursor = useCursor();
     const cursorPx = useCursor().pixel;
     const cursorVp = useCursor().viewport;
-    const objects = useObjects();
-    const setObjects = useObjectsUpdate();
-    const cursor = useCursor();
     const cursorUpdate = useCursorUpdate();
+    const objects = useObjects();
+    const objectsUpdate = useObjectsUpdate();
+    const game = useGame();
 
     const [tipClass, setTipClass] = useState('');
     const [currentID, setCurrentID] = useState(null);
 
     const handleClick = (id) => {
-        cursorUpdate.setFollow(true);
-        setCurrentID(id);
+        if (game.on) {
+            cursorUpdate.setFollow(true);
+            setCurrentID(id);
+        }
     };
 
     useEffect(() => {
-        setObjects.setTip(currentID);
+        objectsUpdate.setTip(currentID);
         objects.reveal();
         setCurrentID(null);
-    }, [currentID, objects, setObjects]);
+    }, [currentID, objects, objectsUpdate]);
 
     useLayoutEffect(() => {
         const vert = cursorVp.y < 50 ? 'top' : 'bottom';

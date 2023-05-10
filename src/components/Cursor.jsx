@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useObjects } from './hooks/ObjectsContext';
-import { useCursor, useCursorUpdate } from './hooks/CursorContext';
+import { useObjects } from './hooks/ObjectsProvider';
+import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
 
 function Cursor() {
     const [position, setPosition] = useState({ x: 0, y: 0 });

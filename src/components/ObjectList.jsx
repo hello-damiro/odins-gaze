@@ -1,5 +1,5 @@
 import React from 'react';
-import { useObjects } from './hooks/ObjectsContext';
+import { useObjects } from './hooks/ObjectsProvider';
 
 function ObjectList() {
     const objects = useObjects().lost;

@@ -152,7 +152,7 @@ img {
 .wrapper {
     position: fixed;
     width: 100%;
-    z-index: 2;
+    z-index: 20;
     padding: 16px;
 }
 
@@ -209,6 +209,7 @@ header .options {
 }
 
 header .options span {
+    font-weight: 700;
     color: var(--blue);
 }
 
@@ -236,7 +237,7 @@ footer {
     margin-inline: auto;
     padding: 16px 24px;
     border-radius: 0 0 6px 6px;
-    background-color: var(--blue-bg);
+    background-color: var(--blue);
     color: var(--green);
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -373,6 +374,7 @@ button.tip:hover {
     flex-direction: column;
     gap: 6px;
     padding-bottom: 64px;
+    z-index: 10;
 }
 
 .score-list-title {
@@ -399,11 +401,13 @@ button.tip:hover {
     color: var(--gray);
     padding: 6px 24px;
     border-radius: 6px;
+    transition: all 0.1s ease-in-out;
 }
 
 .score-item:hover {
     background: var(--gray);
     color: var(--blue);
+    scale: 1.1;
 }
 
 .score-item .name-num {

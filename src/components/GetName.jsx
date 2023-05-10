@@ -1,15 +1,18 @@
 import React from 'react';
+import { useGame } from './hooks/GameProvider';
 
 function GetName() {
+    const game = useGame();
     const handleSubmit = (e) => {
+        console.log('GAME ON!');
         e.preventDefault();
-        console.log('submit');
+        game.setOn(true);
     };
     return (
         <div className="get-name">
             <input type="text" placeholder="Enter name to Play" />
             <button onSubmit={handleSubmit} className="primary">
-                Submit
+                Play
             </button>
         </div>
     );
