@@ -1,8 +1,8 @@
 import React from 'react';
-import { usePickedObjects } from './hooks/PickedObjectsContext';
+import { useObjects } from './hooks/ObjectsContext';
 
 function ObjectList() {
-    const objects = usePickedObjects().lost;
+    const objects = useObjects().lost;
     return (
         <div className="objects-list">
             <ul>

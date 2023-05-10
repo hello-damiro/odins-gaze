@@ -1,21 +1,20 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useCursorPosition } from './hooks/CursorPositionContext';
-import { useCursorFollow, useCursorFollowUpdate } from './hooks/CursorFollowContext';
-import { usePickedObjects, usePickedObjectsUpdate } from './hooks/PickedObjectsContext';
+import { useCursor, useCursorUpdate } from './hooks/CursorContext';
+import { useObjects, useObjectsUpdate } from './hooks/ObjectsContext';
 
 function Tooltip() {
-    const cursorPx = useCursorPosition().pixel;
-    const cursorVp = useCursorPosition().viewport;
-    const objects = usePickedObjects();
-    const setObjects = usePickedObjectsUpdate();
-    const cursorFollow = useCursorFollow();
-    const cursorFollowUpdate = useCursorFollowUpdate();
+    const cursorPx = useCursor().pixel;
+    const cursorVp = useCursor().viewport;
+    const objects = useObjects();
+    const setObjects = useObjectsUpdate();
+    const cursor = useCursor();
+    const cursorUpdate = useCursorUpdate();
 
     const [tipClass, setTipClass] = useState('');
     const [currentID, setCurrentID] = useState(null);
 
     const handleClick = (id) => {
-        cursorFollowUpdate(true);
+        cursorUpdate.setFollow(true);
         setCurrentID(id);
     };
 
@@ -31,7 +30,7 @@ function Tooltip() {
         setTipClass(`tooltip ${vert} ${hori}`);
     }, [cursorVp]);
 
-    if (cursorFollow || objects.lost.length === 0) {
+    if (cursor.follow || objects.lost.length === 0) {
         return null;
     }
 

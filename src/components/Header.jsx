@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { usePickedObjects } from './hooks/PickedObjectsContext';
+import { useObjects } from './hooks/ObjectsContext';
 
 function Header() {
     const [runTime, setRunTime] = useState(0);
     // const [timed, setTimed] = useState(true);
 
-    const timed = usePickedObjects().timed;
+    const timed = useObjects().timed;
 
     useEffect(() => {
         let intervalId;

@@ -4,9 +4,8 @@ import Cursor from './Cursor';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
 import { pickRandomNumbers } from './helper/CommonFunctions';
-import { useCursorPosition, useCursorPositionUpdate } from './hooks/CursorPositionContext';
-import { useCursorFollowUpdate } from './hooks/CursorFollowContext';
-import { usePickedObjects, usePickedObjectsUpdate } from './hooks/PickedObjectsContext';
+import { useCursor, useCursorUpdate } from './hooks/CursorContext';
+import { useObjects, useObjectsUpdate } from './hooks/ObjectsContext';
 
 // Image should be strictly 1512 x 982 pixels
 import image from '../assets/sample_img.webp';
@@ -14,16 +13,15 @@ import image from '../assets/sample_img.webp';
 import { sceneGarage } from '../data/SceneGarage';
 
 function Canvas() {
-    const cursor = useCursorPosition().percent;
-    const cursorUpdate = useCursorPositionUpdate();
-    const cursorFollowUpdate = useCursorFollowUpdate();
+    const cursor = useCursor().percent;
+    const cursorUpdate = useCursorUpdate();
 
-    const objects = usePickedObjects();
-    const setObjects = usePickedObjectsUpdate();
+    const objects = useObjects();
+    const setObjects = useObjectsUpdate();
 
     const handleClick = () => {
-        cursorUpdate({ x: window.clientX, y: window.clientY });
-        cursorFollowUpdate(true);
+        cursorUpdate.setPosition({ x: window.clientX, y: window.clientY });
+        cursorUpdate.setFollow(true);
     };
 
     const checkClickWithinBounds = (objectBound, cursorPos) => {

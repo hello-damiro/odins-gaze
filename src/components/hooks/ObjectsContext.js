@@ -2,18 +2,18 @@ import React, { createContext, useContext, useReducer, useState } from 'react';
 import { objectsReducer } from './ObjectsReducer';
 import { ACTIONS } from './ObjectsReducer';
 
-const PickedObjectsContext = createContext();
-const PickedObjectsContextUpdate = createContext();
+const ObjectsContext = createContext();
+const ObjectsContextUpdate = createContext();
 
-export function usePickedObjects() {
-    return useContext(PickedObjectsContext);
+export function useObjects() {
+    return useContext(ObjectsContext);
 }
 
-export function usePickedObjectsUpdate() {
-    return useContext(PickedObjectsContextUpdate);
+export function useObjectsUpdate() {
+    return useContext(ObjectsContextUpdate);
 }
 
-function PickedObjectsProvider({ children }) {
+function ObjectsProvider({ children }) {
     const [lost, setLost] = useState([]);
     const [tip, setTip] = useState(null);
     const [click, setClick] = useState(null);
@@ -40,12 +40,12 @@ function PickedObjectsProvider({ children }) {
     };
 
     return (
-        <PickedObjectsContext.Provider value={{ lost, tip, click, timed, found, reveal }}>
-            <PickedObjectsContextUpdate.Provider value={{ setLost, setTip, setClick, setTimed }}>
+        <ObjectsContext.Provider value={{ lost, tip, click, timed, found, reveal }}>
+            <ObjectsContextUpdate.Provider value={{ setLost, setTip, setClick, setTimed }}>
                 {children}
-            </PickedObjectsContextUpdate.Provider>
-        </PickedObjectsContext.Provider>
+            </ObjectsContextUpdate.Provider>
+        </ObjectsContext.Provider>
     );
 }
 
-export default PickedObjectsProvider;
+export default ObjectsProvider;

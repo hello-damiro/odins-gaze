@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { usePickedObjects } from './hooks/PickedObjectsContext';
-import { useCursorPositionUpdate } from './hooks/CursorPositionContext';
-import { useCursorFollow, useCursorFollowUpdate } from './hooks/CursorFollowContext';
+import { useObjects } from './hooks/ObjectsContext';
+import { useCursor, useCursorUpdate } from './hooks/CursorContext';
 
 function Cursor() {
     const [position, setPosition] = useState({ x: 0, y: 0 });
-    const cursorPositionUpdate = useCursorPositionUpdate();
-    const cursorFollow = useCursorFollow();
-    const cursorFollowUpdate = useCursorFollowUpdate();
-    const objects = usePickedObjects();
+    const cursor = useCursor();
+    const cursorUpdate = useCursorUpdate();
+    const objects = useObjects();
 
     const handleMouseMove = (e) => {
         setPosition({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
     };
 
     const handleClick = (e) => {
-        cursorPositionUpdate({ x: e.clientX, y: e.clientY });
-        if (objects.lost.length > 0) cursorFollowUpdate(false);
+        cursorUpdate.setPosition({ x: e.clientX, y: e.clientY });
+        if (objects.lost.length > 0) cursorUpdate.setFollow(false);
     };
 
     useEffect(() => {
-        if (cursorFollow) {
+        if (cursor.follow) {
             window.addEventListener('mousemove', handleMouseMove);
             window.addEventListener('click', handleMouseMove);
         }
@@ -29,7 +26,7 @@ function Cursor() {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('click', handleMouseMove);
         };
-    }, [cursorFollow]);
+    }, [cursor.follow]);
 
     return (
         <div
