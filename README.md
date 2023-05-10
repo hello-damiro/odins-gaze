@@ -28,6 +28,7 @@ Ok, it's not find Waldo, its more like [hidden object game](https://en.wikipedia
 -   [x] useState
 -   [x] useContext
 -   [x] useReducer
+-   [x] useRef
 
 </br>
 

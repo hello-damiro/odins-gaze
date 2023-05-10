@@ -60,11 +60,10 @@ function Canvas() {
 
     useEffect(() => {
         setGame(false);
-        console.log('yah here?');
     }, []);
 
     useEffect(() => {
-        if (game.on) setGame(true);
+        console.log('GAME ON', game.on);
         const clickedObject = objects.lost.find((object) =>
             checkClickWithinBounds(object.bounds, cursor)
         );
