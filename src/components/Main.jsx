@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGame } from './hooks/GameProvider';
+import { useObjects } from './hooks/ObjectsProvider';
 
 import Header from './Header';
 import ObjectList from './ObjectList';
@@ -9,16 +9,16 @@ import Footer from './Footer';
 import TopScoreList from './TopScoreList';
 
 function Main() {
-    const game = useGame();
+    const game = useObjects();
     const { showScoreList, setShewScoreList } = useState(false);
     return (
         <>
             <div className="wrapper">
                 <div className="container">
                     <Header />
-                    {game.on && <ObjectList />}
-                    {!game.on && <StoryLine />}
-                    {!game.on && <GetName />}
+                    {game.init && <ObjectList />}
+                    {!game.init && <StoryLine />}
+                    {!game.init && <GetName />}
                     <Footer />
                 </div>
             </div>

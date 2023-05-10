@@ -1,7 +1,13 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
-import { useGame } from './GameProvider';
 import { objectsReducer } from './ObjectsReducer';
 import { ACTIONS } from './ObjectsReducer';
+import { delay } from '../utils/delay';
+import { pickRandomNumbers } from '../utils/pickRandomNumbers';
+
+// Image should be strictly 1512 x 982 pixels
+import imgFile from '../../assets/sample_img.webp';
+// Object Data from the Image
+import { sceneGarage } from '../../data/SceneGarage';
 
 const ObjectsContext = createContext();
 const ObjectsContextUpdate = createContext();
@@ -15,14 +21,44 @@ export function useObjectsUpdate() {
 }
 
 function ObjectsProvider({ children }) {
+    const imageFile = imgFile;
+    const imageData = sceneGarage;
+
     const [lost, setLost] = useState([]);
     const [tip, setTip] = useState(null);
     const [click, setClick] = useState(null);
     const [timed, setTimed] = useState(false);
     const [timer, setTimer] = useState(0);
+    const [init, setInit] = useState(false);
+    const [image, setImage] = useState('');
+
     const [found, dispatch] = useReducer(objectsReducer, []);
 
-    const game = useGame();
+    const setGame = (on) => {
+        setImage(imageFile);
+        if (on) {
+            const randomNumbers = pickRandomNumbers(3, imageData.length);
+            const filteredObjects = imageData.filter((object) => {
+                return randomNumbers.includes(object.id);
+            });
+            const mapObjects = filteredObjects.map((object, index) => ({
+                id: index,
+                name: object.name,
+                shown: false,
+                bounds: {
+                    xStart: object.x,
+                    yStart: object.y,
+                    xStop: object.x + object.width,
+                    yStop: object.y + object.height,
+                },
+            }));
+            setLost(mapObjects);
+            setTimed(true);
+        } else {
+            setTimed(false);
+        }
+        console.log('GAME ON', on);
+    };
 
     const reveal = () => {
         if (click === tip && click !== null) {
@@ -31,13 +67,15 @@ function ObjectsProvider({ children }) {
         }
         if (found.length === lost.length && found.length > 0) {
             console.log('Game over');
-            game.setOn(false);
+            setTimed(false);
             reset();
         }
     };
 
-    const reset = () => {
+    const reset = async () => {
+        await delay(3000);
         dispatch({ type: ACTIONS.CLEAR });
+        setInit(false);
         setTimer(0);
         setLost([]);
         setTip(null);
@@ -45,9 +83,10 @@ function ObjectsProvider({ children }) {
     };
 
     return (
-        <ObjectsContext.Provider value={{ lost, tip, click, timed, timer, found, reveal }}>
+        <ObjectsContext.Provider
+            value={{ lost, tip, click, timed, timer, found, reveal, init, image }}>
             <ObjectsContextUpdate.Provider
-                value={{ setLost, setTip, setClick, setTimed, setTimer }}>
+                value={{ setLost, setTip, setClick, setTimed, setTimer, setInit, setGame }}>
                 {children}
             </ObjectsContextUpdate.Provider>
         </ObjectsContext.Provider>

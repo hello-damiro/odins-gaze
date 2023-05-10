@@ -1,7 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
 import { useObjects, useObjectsUpdate } from './hooks/ObjectsProvider';
-import { useGame } from './hooks/GameProvider';
 
 function Tooltip() {
     const cursor = useCursor();
@@ -10,13 +9,12 @@ function Tooltip() {
     const cursorUpdate = useCursorUpdate();
     const objects = useObjects();
     const objectsUpdate = useObjectsUpdate();
-    const game = useGame();
 
     const [tipClass, setTipClass] = useState('');
     const [currentID, setCurrentID] = useState(null);
 
     const handleClick = (id) => {
-        if (game.on) {
+        if (objects.init) {
             cursorUpdate.setFollow(true);
             setCurrentID(id);
         }

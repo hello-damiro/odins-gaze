@@ -3,15 +3,8 @@ import Cursor from './Cursor';
 import Tooltip from './Tooltip';
 import Object from './Object';
 import ObjectImage from './ObjectImage';
-import { pickRandomNumbers } from './utils/pickRandomNumbers';
 import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
 import { useObjects, useObjectsUpdate } from './hooks/ObjectsProvider';
-
-// Image should be strictly 1512 x 982 pixels
-import image from '../assets/sample_img.webp';
-// Object Data from the Image
-import { sceneGarage } from '../data/SceneGarage';
-import { useGame } from './hooks/GameProvider';
 
 function Canvas() {
     const cursor = useCursor().percent;
@@ -19,8 +12,6 @@ function Canvas() {
 
     const objects = useObjects();
     const setObjects = useObjectsUpdate();
-
-    const game = useGame();
 
     const handleClick = () => {
         cursorUpdate.setPosition({ x: window.clientX, y: window.clientY });
@@ -36,31 +27,9 @@ function Canvas() {
             return false;
         }
     };
-
     useEffect(() => {
-        if (game.on) {
-            setObjects.setTimed(true);
-            const randomNumbers = pickRandomNumbers(3, sceneGarage.length);
-            const filteredObjects = sceneGarage.filter((object) => {
-                return randomNumbers.includes(object.id);
-            });
-            const mapObjects = filteredObjects.map((object, index) => ({
-                id: index,
-                name: object.name,
-                shown: false,
-                bounds: {
-                    xStart: object.x,
-                    yStart: object.y,
-                    xStop: object.x + object.width,
-                    yStop: object.y + object.height,
-                },
-            }));
-            setObjects.setLost(mapObjects);
-        } else {
-            setObjects.setTimed(false);
-        }
-        console.log('GAME ON', game.on);
-    }, [game.on]);
+        setObjects.setGame(objects.init);
+    }, [objects.init]);
 
     useEffect(() => {
         const clickedObject = objects.lost.find((object) =>
@@ -83,7 +52,7 @@ function Canvas() {
                         <Object key={object.id} object={object} show={object.shown} />
                     ))}
                 </div>
-                <ObjectImage img={image} blur={objects.timed ? 0 : 100} />
+                <ObjectImage img={objects.image} blur={objects.init ? 0 : 100} />
             </div>
         </main>
     );

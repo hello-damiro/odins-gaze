@@ -24,7 +24,7 @@ function Header() {
                 <h1>Odin's Gaze</h1>
             </div>
             <div className="options">
-                {object.timed && (
+                {object.init && (
                     <div>
                         Elapsed time: <span>{object.timer}s</span>
                     </div>

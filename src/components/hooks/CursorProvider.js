@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { round } from '../utils/round';
+import { roundOff } from '../utils/roundOff';
 
 const CursorContext = createContext();
 const CursorContextUpdate = createContext();
@@ -25,13 +25,13 @@ function CursorProvider({ children }) {
         y: position.y + window.pageYOffset,
     };
     const viewport = {
-        x: round((position.x * 100) / window.innerWidth),
-        y: round((position.y * 100) / window.innerHeight),
+        x: roundOff((position.x * 100) / window.innerWidth),
+        y: roundOff((position.y * 100) / window.innerHeight),
     };
     const percent = {
         // convert px to % ref to img
-        x: round((pixel.x * 100) / vw, 1),
-        y: round((pixel.y * 100) / vh, 1),
+        x: roundOff((pixel.x * 100) / vw, 1),
+        y: roundOff((pixel.y * 100) / vh, 1),
     };
     return (
         <CursorContext.Provider value={{ pixel, percent, viewport, follow }}>

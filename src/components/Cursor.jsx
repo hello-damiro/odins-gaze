@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
 import { useObjects } from './hooks/ObjectsProvider';
-import { useGame } from './hooks/GameProvider';
 
 function Cursor() {
-    const game = useGame();
     const objects = useObjects();
     const cursor = useCursor();
     const cursorUpdate = useCursorUpdate();
@@ -16,7 +14,7 @@ function Cursor() {
     };
 
     const handleClick = (e) => {
-        if (game.on) {
+        if (objects.init) {
             cursorUpdate.setPosition({ x: e.clientX, y: e.clientY });
             if (objects.lost.length > 0) cursorUpdate.setFollow(false);
         }

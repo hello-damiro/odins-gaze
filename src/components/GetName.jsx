@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
-import { useGame } from './hooks/GameProvider';
+import { useObjectsUpdate } from './hooks/ObjectsProvider';
 
 function GetName() {
-    const game = useGame();
+    const game = useObjectsUpdate();
     const input = useRef();
     const handleSubmit = (e) => {
         e.preventDefault();
         if (input.current.value !== '') {
-            game.setOn(true);
+            game.setInit(true);
         }
     };
     return (
