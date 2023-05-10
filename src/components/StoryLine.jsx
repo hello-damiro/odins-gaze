@@ -4,19 +4,20 @@ function StoryLine() {
     return (
         <div className="stroy-line">
             <p>
-                In <em>Odin's Gaze</em>, you are a skilled seeker selected by the great Norse god
-                Odin to find hidden objects using his powerful tool. With your sharp eyesight and
-                puzzle-solving abilities, you must explore a variety of locations and discover
-                objects hidden in plain sight.
+                In <em>Odin's Gaze</em>: Quest for the Lost Objects, you are a chosen seeker tasked
+                with finding Odin's misplaced treasures scattered across the nine realms. Equipped
+                with your sharp perception and guided by Odin's wisdom, you embark on a
+                time-sensitive journey to uncover hidden objects in diverse and challenging
+                landscapes.
             </p>
             <p>
-                As you progress through increasingly difficult levels, you'll encounter unique
-                objects and challenging puzzles that require your full attention. With Odin's Gaze,
-                you'll be able to see beyond the surface and uncover secrets that would have
-                remained hidden otherwise. Can you find all the hidden objects and solve the puzzles
-                to become the ultimate seeker? The power of Odin's Gaze is in your hands.
+                Using the power of the Sightstone, you reveal the elusive items while competing
+                against other seekers to climb the high score ladder. With each object found, you
+                unravel the mischievous plot of Loki and delve deeper into the realms of Norse
+                mythology. Prepare to immerse yourself in a captivating hidden objects game where
+                speed, precision, and mythic intrigue await!
             </p>
-            <button className="secondary">View Top Score</button>
+            <button className="secondary">High Score Ladder</button>
         </div>
     );
 }

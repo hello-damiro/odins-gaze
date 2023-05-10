@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { round } from '../helper/CommonFunctions';
+import { round } from '../utils/round';
 
 const CursorContext = createContext();
 const CursorContextUpdate = createContext();

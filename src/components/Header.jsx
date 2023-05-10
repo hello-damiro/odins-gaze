@@ -24,9 +24,11 @@ function Header() {
                 <h1>Odin's Gaze</h1>
             </div>
             <div className="options">
-                <div>
-                    Elapsed time: <span>{object.timer}s</span>
-                </div>
+                {object.timed && (
+                    <div>
+                        Elapsed time: <span>{object.timer}s</span>
+                    </div>
+                )}
                 <button className="about">?</button>
             </div>
         </header>

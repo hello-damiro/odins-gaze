@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useObjects } from './hooks/ObjectsProvider';
 import { useCursor, useCursorUpdate } from './hooks/CursorProvider';
+import { useObjects } from './hooks/ObjectsProvider';
+import { useGame } from './hooks/GameProvider';
 
 function Cursor() {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const game = useGame();
+    const objects = useObjects();
     const cursor = useCursor();
     const cursorUpdate = useCursorUpdate();
-    const objects = useObjects();
+
+    const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e) => {
         setPosition({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
     };
 
     const handleClick = (e) => {
-        cursorUpdate.setPosition({ x: e.clientX, y: e.clientY });
-        if (objects.lost.length > 0) cursorUpdate.setFollow(false);
+        if (game.on) {
+            cursorUpdate.setPosition({ x: e.clientX, y: e.clientY });
+            if (objects.lost.length > 0) cursorUpdate.setFollow(false);
+        }
     };
 
     useEffect(() => {

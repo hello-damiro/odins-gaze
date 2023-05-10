@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
+import { useGame } from './GameProvider';
 import { objectsReducer } from './ObjectsReducer';
 import { ACTIONS } from './ObjectsReducer';
 
@@ -21,6 +22,8 @@ function ObjectsProvider({ children }) {
     const [timer, setTimer] = useState(0);
     const [found, dispatch] = useReducer(objectsReducer, []);
 
+    const game = useGame();
+
     const reveal = () => {
         if (click === tip && click !== null) {
             const object = lost.find((object) => object.id === tip);
@@ -28,13 +31,14 @@ function ObjectsProvider({ children }) {
         }
         if (found.length === lost.length && found.length > 0) {
             console.log('Game over');
-            setTimed(false);
+            game.setOn(false);
             reset();
         }
     };
 
     const reset = () => {
         dispatch({ type: ACTIONS.CLEAR });
+        setTimer(0);
         setLost([]);
         setTip(null);
         setClick(null);
