@@ -34,6 +34,7 @@ function ObjectsProvider({ children }) {
     const [timer, setTimer] = useState(0);
     const [init, setInit] = useState(false);
     const [image, setImage] = useState(imageFile);
+    const [scene, setScene] = useState(imageFile);
 
     const [found, dispatch] = useReducer(objectsReducer, []);
 
@@ -87,7 +88,7 @@ function ObjectsProvider({ children }) {
 
     return (
         <ObjectsContext.Provider
-            value={{ lost, tip, click, timed, timer, found, reveal, init, image, scenes }}>
+            value={{ lost, tip, click, timed, timer, found, reveal, init, image, scene, scenes }}>
             <ObjectsContextUpdate.Provider
                 value={{
                     setLost,
@@ -97,6 +98,8 @@ function ObjectsProvider({ children }) {
                     setTimer,
                     setInit,
                     setGame,
+                    setScene,
+                    setImage,
                 }}>
                 {children}
             </ObjectsContextUpdate.Provider>
