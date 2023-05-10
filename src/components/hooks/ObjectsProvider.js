@@ -5,9 +5,9 @@ import { delay } from '../utils/delay';
 import { pickRandomNumbers } from '../utils/pickRandomNumbers';
 
 // Image should be strictly 1512 x 982 pixels
-import imgFile from '../../assets/scene_garage.webp';
+import imgFile from '../../assets/scene_market.webp';
 // Object Data from the Image
-import { sceneGarage } from '../../data/SceneGarage';
+import { sceneData } from '../../data/SceneMarket';
 // Scenes Data
 import { scenesData } from '../../data/Scenes';
 
@@ -24,7 +24,7 @@ export function useObjectsUpdate() {
 
 function ObjectsProvider({ children }) {
     const imageFile = imgFile;
-    const imageData = sceneGarage;
+    const imageData = sceneData;
     const scenes = scenesData;
 
     const [lost, setLost] = useState([]);

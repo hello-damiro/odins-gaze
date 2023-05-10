@@ -1,4 +1,4 @@
-export const sceneGarage = [
+export const sceneData = [
     {
         id: 1,
         name: 'fire extinguisher',
