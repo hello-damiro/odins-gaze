@@ -2,8 +2,8 @@ import React from 'react';
 
 import Header from './Header';
 import ObjectList from './ObjectList';
-// import StoryLine from './StoryLine';
-// import GetName from './GetName';
+import StoryLine from './StoryLine';
+import GetName from './GetName';
 import Footer from './Footer';
 // import TopScoreList from './TopScoreList';
 
@@ -14,8 +14,8 @@ function Main() {
                 <div className="container">
                     <Header />
                     <ObjectList />
-                    {/* <StoryLine /> */}
-                    {/* <GetName /> */}
+                    <StoryLine />
+                    <GetName />
                     <Footer />
                 </div>
             </div>

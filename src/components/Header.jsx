@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useObjects } from './hooks/ObjectsContext';
+import React, { useEffect } from 'react';
+import { useObjects, useObjectsUpdate } from './hooks/ObjectsContext';
 
 function Header() {
-    const [runTime, setRunTime] = useState(0);
-    // const [timed, setTimed] = useState(true);
-
-    const timed = useObjects().timed;
+    const object = useObjects();
+    const objectUpdate = useObjectsUpdate();
 
     useEffect(() => {
         let intervalId;
-
-        if (timed) {
+        if (object.timed) {
             intervalId = setInterval(() => {
-                setRunTime((prevTime) => prevTime + 1);
+                objectUpdate.setTimer((prevTime) => prevTime + 1);
             }, 1000);
         }
-
         return () => {
             clearInterval(intervalId);
         };
-    }, [timed]);
+    }, [object, objectUpdate]);
 
     return (
         <header>
@@ -29,7 +25,7 @@ function Header() {
             </div>
             <div className="options">
                 <div>
-                    Elapsed time: <span>{runTime}s</span>
+                    Elapsed time: <span>{object.timer}s</span>
                 </div>
                 <button className="about">?</button>
             </div>

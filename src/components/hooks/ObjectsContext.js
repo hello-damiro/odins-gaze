@@ -18,6 +18,7 @@ function ObjectsProvider({ children }) {
     const [tip, setTip] = useState(null);
     const [click, setClick] = useState(null);
     const [timed, setTimed] = useState(false);
+    const [timer, setTimer] = useState(0);
     const [found, dispatch] = useReducer(objectsReducer, []);
 
     const reveal = () => {
@@ -40,8 +41,9 @@ function ObjectsProvider({ children }) {
     };
 
     return (
-        <ObjectsContext.Provider value={{ lost, tip, click, timed, found, reveal }}>
-            <ObjectsContextUpdate.Provider value={{ setLost, setTip, setClick, setTimed }}>
+        <ObjectsContext.Provider value={{ lost, tip, click, timed, timer, found, reveal }}>
+            <ObjectsContextUpdate.Provider
+                value={{ setLost, setTip, setClick, setTimed, setTimer }}>
                 {children}
             </ObjectsContextUpdate.Provider>
         </ObjectsContext.Provider>
