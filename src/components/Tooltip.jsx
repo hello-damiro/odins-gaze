@@ -31,7 +31,7 @@ function Tooltip() {
         setTipClass(`tooltip ${vert} ${hori}`);
     }, [cursorVp]);
 
-    if (cursorFollow) {
+    if (cursorFollow || objects.lost.length === 0) {
         return null;
     }
 

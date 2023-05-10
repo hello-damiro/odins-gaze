@@ -17,6 +17,7 @@ function PickedObjectsProvider({ children }) {
     const [lost, setLost] = useState([]);
     const [tip, setTip] = useState(null);
     const [click, setClick] = useState(null);
+    const [timed, setTimed] = useState(false);
     const [found, dispatch] = useReducer(objectsReducer, []);
 
     const reveal = () => {
@@ -26,6 +27,7 @@ function PickedObjectsProvider({ children }) {
         }
         if (found.length === lost.length && found.length > 0) {
             console.log('Game over');
+            setTimed(false);
             reset();
         }
     };
@@ -38,8 +40,8 @@ function PickedObjectsProvider({ children }) {
     };
 
     return (
-        <PickedObjectsContext.Provider value={{ lost, tip, click, found, reveal }}>
-            <PickedObjectsContextUpdate.Provider value={{ setLost, setTip, setClick }}>
+        <PickedObjectsContext.Provider value={{ lost, tip, click, timed, found, reveal }}>
+            <PickedObjectsContextUpdate.Provider value={{ setLost, setTip, setClick, setTimed }}>
                 {children}
             </PickedObjectsContextUpdate.Provider>
         </PickedObjectsContext.Provider>

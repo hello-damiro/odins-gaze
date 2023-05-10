@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { usePickedObjects } from './hooks/PickedObjectsContext';
 
 function Header() {
+    const [runTime, setRunTime] = useState(0);
+    // const [timed, setTimed] = useState(true);
+
+    const timed = usePickedObjects().timed;
+
+    useEffect(() => {
+        let intervalId;
+
+        if (timed) {
+            intervalId = setInterval(() => {
+                setRunTime((prevTime) => prevTime + 1);
+            }, 1000);
+        }
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [timed]);
+
     return (
         <header>
             <div className="logo-title">
@@ -9,7 +29,7 @@ function Header() {
             </div>
             <div className="options">
                 <div>
-                    Timer: <span>36s</span>
+                    Elapsed time: <span>{runTime}s</span>
                 </div>
                 <button className="about">?</button>
             </div>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { usePickedObjects } from './hooks/PickedObjectsContext';
 import { useCursorPositionUpdate } from './hooks/CursorPositionContext';
 import { useCursorFollow, useCursorFollowUpdate } from './hooks/CursorFollowContext';
 
@@ -7,6 +9,7 @@ function Cursor() {
     const cursorPositionUpdate = useCursorPositionUpdate();
     const cursorFollow = useCursorFollow();
     const cursorFollowUpdate = useCursorFollowUpdate();
+    const objects = usePickedObjects();
 
     const handleMouseMove = (e) => {
         setPosition({ x: e.clientX + window.pageXOffset, y: e.clientY + window.pageYOffset });
@@ -14,7 +17,7 @@ function Cursor() {
 
     const handleClick = (e) => {
         cursorPositionUpdate({ x: e.clientX, y: e.clientY });
-        cursorFollowUpdate(false);
+        if (objects.lost.length > 0) cursorFollowUpdate(false);
     };
 
     useEffect(() => {
@@ -26,7 +29,7 @@ function Cursor() {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('click', handleMouseMove);
         };
-    }, [setPosition, cursorFollow]);
+    }, [cursorFollow]);
 
     return (
         <div

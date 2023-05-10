@@ -54,6 +54,7 @@ function Canvas() {
         }));
         console.log(mapObjects);
         setObjects.setLost(mapObjects);
+        setObjects.setTimed(true);
     }, []);
 
     useEffect(() => {
