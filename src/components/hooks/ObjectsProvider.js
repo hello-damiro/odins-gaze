@@ -8,6 +8,8 @@ import { pickRandomNumbers } from '../utils/pickRandomNumbers';
 import imgFile from '../../assets/sample_img.webp';
 // Object Data from the Image
 import { sceneGarage } from '../../data/SceneGarage';
+// Scenes Data
+import { scenesData } from '../../data/Scenes';
 
 const ObjectsContext = createContext();
 const ObjectsContextUpdate = createContext();
@@ -23,6 +25,7 @@ export function useObjectsUpdate() {
 function ObjectsProvider({ children }) {
     const imageFile = imgFile;
     const imageData = sceneGarage;
+    const scenes = scenesData;
 
     const [lost, setLost] = useState([]);
     const [tip, setTip] = useState(null);
@@ -30,7 +33,7 @@ function ObjectsProvider({ children }) {
     const [timed, setTimed] = useState(false);
     const [timer, setTimer] = useState(0);
     const [init, setInit] = useState(false);
-    const [image, setImage] = useState('imgFile');
+    const [image, setImage] = useState(imageFile);
 
     const [found, dispatch] = useReducer(objectsReducer, []);
 
@@ -84,9 +87,17 @@ function ObjectsProvider({ children }) {
 
     return (
         <ObjectsContext.Provider
-            value={{ lost, tip, click, timed, timer, found, reveal, init, image }}>
+            value={{ lost, tip, click, timed, timer, found, reveal, init, image, scenes }}>
             <ObjectsContextUpdate.Provider
-                value={{ setLost, setTip, setClick, setTimed, setTimer, setInit, setGame }}>
+                value={{
+                    setLost,
+                    setTip,
+                    setClick,
+                    setTimed,
+                    setTimer,
+                    setInit,
+                    setGame,
+                }}>
                 {children}
             </ObjectsContextUpdate.Provider>
         </ObjectsContext.Provider>

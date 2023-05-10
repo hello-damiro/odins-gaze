@@ -24,9 +24,14 @@
         height: calc(--h);
     }
 
+    .floating-container {
+        margin-top: 120px;
+    }
+
     .scenes {
+        height: 40vh;
         flex-direction: column;
-        height: 160px;
+        padding-inline: 16px;
     }
 }
 
