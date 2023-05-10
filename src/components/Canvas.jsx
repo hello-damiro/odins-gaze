@@ -27,9 +27,6 @@ function Canvas() {
             return false;
         }
     };
-    useEffect(() => {
-        setObjects.setGame(objects.init);
-    }, [objects.init]);
 
     useEffect(() => {
         const clickedObject = objects.lost.find((object) =>

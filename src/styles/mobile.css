@@ -23,6 +23,11 @@
     .game-image {
         height: calc(--h);
     }
+
+    .scenes {
+        flex-direction: column;
+        height: 160px;
+    }
 }
 
 @media (orientation: landscape) {

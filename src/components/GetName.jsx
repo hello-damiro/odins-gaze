@@ -8,6 +8,7 @@ function GetName() {
         e.preventDefault();
         if (input.current.value !== '') {
             game.setInit(true);
+            game.setGame(true);
         }
     };
     return (

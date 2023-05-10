@@ -30,7 +30,7 @@ function ObjectsProvider({ children }) {
     const [timed, setTimed] = useState(false);
     const [timer, setTimer] = useState(0);
     const [init, setInit] = useState(false);
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState('imgFile');
 
     const [found, dispatch] = useReducer(objectsReducer, []);
 

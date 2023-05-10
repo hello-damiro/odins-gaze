@@ -6,6 +6,7 @@ import ObjectList from './ObjectList';
 import StoryLine from './StoryLine';
 import GetName from './GetName';
 import Footer from './Footer';
+import SceneSelection from './SceneSelection';
 import TopScoreList from './TopScoreList';
 
 function Main() {
@@ -19,6 +20,7 @@ function Main() {
                     {game.init && <ObjectList />}
                     {!game.init && <StoryLine />}
                     {!game.init && <GetName />}
+                    {/* {!game.init && <SceneSelection />} */}
                     <Footer />
                 </div>
             </div>
