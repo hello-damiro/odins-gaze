@@ -28,16 +28,21 @@ function Canvas() {
         }
     };
 
+    // USED ONLY FOR MAPPING JSON DATA TO IMAGE
     useEffect(() => {
-        const clickedObject = objects.lost.find((object) =>
-            checkClickWithinBounds(object.bounds, cursor)
-        );
-        if (clickedObject) {
-            setObjects.setClick(clickedObject.id);
-        } else {
-            setObjects.setClick(null);
-        }
-    }, [cursor, objects, setObjects]);
+        objects.showAll();
+    }, []);
+
+    // useEffect(() => {
+    //     const clickedObject = objects.lost.find((object) =>
+    //         checkClickWithinBounds(object.bounds, cursor)
+    //     );
+    //     if (clickedObject) {
+    //         setObjects.setClick(clickedObject.id);
+    //     } else {
+    //         setObjects.setClick(null);
+    //     }
+    // }, [cursor, objects, setObjects]);
 
     return (
         <main>
@@ -49,7 +54,8 @@ function Canvas() {
                         <Object key={object.id} object={object} show={object.shown} />
                     ))}
                 </div>
-                <ObjectImage img={objects.image} blur={objects.init ? 0 : 100} />
+                {/* <ObjectImage img={objects.image} blur={objects.init ? 0 : 100} /> */}
+                <ObjectImage img={objects.image} />
             </div>
         </main>
     );

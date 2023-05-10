@@ -87,7 +87,7 @@ main {
 
 .marker {
     position: absolute;
-    /* background: var(--white-mark); */
+    background: var(--white-mark);
     /* color: var(--blue); */
     display: flex;
     align-items: center;
@@ -96,9 +96,9 @@ main {
 }
 
 .marker.show {
-    outline: 2px dashed #ffffff;
+    /* outline: 2px dashed #ffffff;
     outline-offset: 12px;
-    border-radius: 8px;
+    border-radius: 8px; */
 }
 
 .cursor {

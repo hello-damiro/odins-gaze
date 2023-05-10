@@ -5,7 +5,7 @@ import { delay } from '../utils/delay';
 import { pickRandomNumbers } from '../utils/pickRandomNumbers';
 
 // Image should be strictly 1512 x 982 pixels
-import imgFile from '../../assets/sample_img.webp';
+import imgFile from '../../assets/scene_garage.webp';
 // Object Data from the Image
 import { sceneGarage } from '../../data/SceneGarage';
 // Scenes Data
@@ -64,6 +64,21 @@ function ObjectsProvider({ children }) {
         console.log('GAME ON', on);
     };
 
+    const showAll = () => {
+        const mapObjects = imageData.map((object, index) => ({
+            id: index,
+            name: object.name,
+            shown: false,
+            bounds: {
+                xStart: object.x,
+                yStart: object.y,
+                xStop: object.x + object.width,
+                yStop: object.y + object.height,
+            },
+        }));
+        dispatch({ type: ACTIONS.SHOW, payload: mapObjects });
+    };
+
     const reveal = () => {
         if (click === tip && click !== null) {
             const object = lost.find((object) => object.id === tip);
@@ -88,7 +103,20 @@ function ObjectsProvider({ children }) {
 
     return (
         <ObjectsContext.Provider
-            value={{ lost, tip, click, timed, timer, found, reveal, init, image, scene, scenes }}>
+            value={{
+                lost,
+                tip,
+                click,
+                timed,
+                timer,
+                found,
+                reveal,
+                showAll,
+                init,
+                image,
+                scene,
+                scenes,
+            }}>
             <ObjectsContextUpdate.Provider
                 value={{
                     setLost,

@@ -5,9 +5,7 @@ function Footer() {
         <footer>
             <div className="credits">
                 <h3>
-                    <a href="https://www.artstation.com/artwork/o3y5J/">
-                        Image by: Anna Truszkowska
-                    </a>
+                    <a href="https://antru.artstation.com/">Image by: Anna Truszkowska</a>
                 </h3>
             </div>
             <div className="copyright">

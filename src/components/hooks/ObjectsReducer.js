@@ -1,6 +1,7 @@
 export const ACTIONS = {
     ADD: 'add',
     CLEAR: 'clear',
+    SHOW: 'show',
 };
 
 export function objectsReducer(objectState, action) {
@@ -14,6 +15,14 @@ export function objectsReducer(objectState, action) {
             const newState = [...objectState, newStateItem];
             objectState = newState;
             return objectState;
+        }
+        case ACTIONS.SHOW: {
+            const objects = action.payload;
+            const updatedObjectState = objects.map((object) => {
+                return { ...object, shown: true };
+            });
+            console.log(updatedObjectState);
+            return updatedObjectState;
         }
         case ACTIONS.CLEAR: {
             objectState = [];

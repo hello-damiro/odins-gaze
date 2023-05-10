@@ -20,7 +20,7 @@ function Main() {
                     {game.init && <ObjectList />}
                     {/* {!game.init && <StoryLine />} */}
                     {!game.init && <GetName />}
-                    {!game.init && <SceneSelection />}
+                    {/* {!game.init && <SceneSelection />} */}
                     <Footer />
                 </div>
             </div>
