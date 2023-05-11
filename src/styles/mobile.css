@@ -29,7 +29,7 @@
     }
 
     .scenes {
-        height: 40vh;
+        height: 50vh;
         flex-direction: column;
         padding-inline: 16px;
     }
