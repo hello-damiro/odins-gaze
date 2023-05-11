@@ -5,9 +5,9 @@ import { delay } from '../utils/delay';
 import { pickRandomNumbers } from '../utils/pickRandomNumbers';
 
 // Image should be strictly 1512 x 982 pixels
-import imgFile from '../../assets/scene_market.webp';
+import imgFile from '../../assets/scene_office.webp';
 // Object Data from the Image
-import { sceneData } from '../../data/SceneMarket';
+import { sceneData } from '../../data/SceneOffice';
 // Scenes Data
 import { scenesData } from '../../data/Scenes';
 
