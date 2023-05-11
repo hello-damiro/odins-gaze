@@ -8,6 +8,7 @@ import GetName from './GetName';
 import Footer from './Footer';
 import SceneSelection from './SceneSelection';
 import TopScoreList from './TopScoreList';
+import UploadScenes from '../data/UploadScenes';
 
 function Main() {
     const game = useObjects();
@@ -17,10 +18,11 @@ function Main() {
             <div className="wrapper">
                 <div className="container">
                     <Header />
-                    {game.init && <ObjectList />}
+                    {/* {game.init && <ObjectList />} */}
                     {/* {!game.init && <StoryLine />} */}
-                    {!game.init && <GetName />}
-                    {!game.init && <SceneSelection />}
+                    {/* {!game.init && <GetName />} */}
+                    {/* {!game.init && <SceneSelection />} */}
+                    <UploadScenes />
                     <Footer />
                 </div>
             </div>

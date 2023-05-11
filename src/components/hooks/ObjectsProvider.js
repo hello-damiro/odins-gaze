@@ -1,15 +1,13 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, { createContext, useContext, useEffect, useReducer, useState } from 'react';
 import { objectsReducer } from './ObjectsReducer';
 import { ACTIONS } from './ObjectsReducer';
 import { delay } from '../utils/delay';
 import { pickRandomNumbers } from '../utils/pickRandomNumbers';
 
 // Image should be strictly 1512 x 982 pixels
-import imgFile from '../../assets/scene_office.webp';
-// Object Data from the Image
-import { sceneData } from '../../data/SceneOffice';
-// Scenes Data
+// Scenes compilation data
 import { scenesData } from '../../data/Scenes';
+import { sceneData } from '../../data/SceneGarage';
 
 const ObjectsContext = createContext();
 const ObjectsContextUpdate = createContext();
@@ -23,23 +21,31 @@ export function useObjectsUpdate() {
 }
 
 function ObjectsProvider({ children }) {
-    const imageFile = imgFile;
-    const imageData = sceneData;
     const scenes = scenesData;
 
+    const [init, setInit] = useState(false);
     const [lost, setLost] = useState([]);
     const [tip, setTip] = useState(null);
     const [click, setClick] = useState(null);
     const [timed, setTimed] = useState(false);
     const [timer, setTimer] = useState(0);
-    const [init, setInit] = useState(false);
-    const [image, setImage] = useState(imageFile);
-    const [scene, setScene] = useState(imageFile);
+    const [image, setImage] = useState(scenesData[0].img);
+    const [scene, setScene] = useState(scenesData[0].img);
+    const [imageData, setImagedata] = useState({});
 
     const [found, dispatch] = useReducer(objectsReducer, []);
 
+    const fetchScene = (scene) => {
+        console.log(scene.obj, scene.id);
+        setImagedata(scenesData); // Should be dynamically fetched
+    };
+
+    useEffect(() => {
+        fetchScene(scene);
+    }, [scene]);
+
     const setGame = (on) => {
-        setImage(imageFile);
+        setImage(scenesData[0].img);
         if (on) {
             const randomNumbers = pickRandomNumbers(3, imageData.length);
             const filteredObjects = imageData.filter((object) => {
@@ -64,21 +70,6 @@ function ObjectsProvider({ children }) {
         console.log('GAME ON', on);
     };
 
-    const showAll = () => {
-        const mapObjects = imageData.map((object, index) => ({
-            id: index,
-            name: object.name,
-            shown: false,
-            bounds: {
-                xStart: object.x,
-                yStart: object.y,
-                xStop: object.x + object.width,
-                yStop: object.y + object.height,
-            },
-        }));
-        dispatch({ type: ACTIONS.SHOW, payload: mapObjects });
-    };
-
     const reveal = () => {
         if (click === tip && click !== null) {
             const object = lost.find((object) => object.id === tip);
@@ -99,6 +90,22 @@ function ObjectsProvider({ children }) {
         setLost([]);
         setTip(null);
         setClick(null);
+    };
+
+    // USED ONLY FOR MAPPING JSON DATA TO IMAGE
+    const showAll = () => {
+        const mapObjects = imageData.map((object, index) => ({
+            id: index,
+            name: object.name,
+            shown: false,
+            bounds: {
+                xStart: object.x,
+                yStart: object.y,
+                xStop: object.x + object.width,
+                yStop: object.y + object.height,
+            },
+        }));
+        dispatch({ type: ACTIONS.SHOW, payload: mapObjects });
     };
 
     return (

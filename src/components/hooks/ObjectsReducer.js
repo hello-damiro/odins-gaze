@@ -1,7 +1,7 @@
 export const ACTIONS = {
-    ADD: 'add',
-    CLEAR: 'clear',
-    SHOW: 'show',
+    ADD: 'add', // Adds the object to display
+    CLEAR: 'clear', // Emptys the display
+    SHOW: 'show', // Show all objects for makig JSON data for the image
 };
 
 export function objectsReducer(objectState, action) {

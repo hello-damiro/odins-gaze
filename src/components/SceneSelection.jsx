@@ -5,15 +5,17 @@ import { useObjects, useObjectsUpdate } from './hooks/ObjectsProvider';
 function SceneSelection() {
     const scenes = useObjects().scenes;
     const setImage = useObjectsUpdate().setImage;
-    const handleClick = (img) => {
-        setImage(img);
+    const setScene = useObjectsUpdate().setScene;
+    const handleClick = (scene) => {
+        setScene(scene);
+        setImage(scene.img);
     };
     return (
         <div className="floating-container">
             <h2>Select Scene</h2>
             <div className="scenes">
                 {scenes.map((scene) => (
-                    <div key={scene.id} onClick={() => handleClick(scene.img)} className="scene">
+                    <div key={scene.id} onClick={() => handleClick(scene)} className="scene">
                         <h3>{scene.name}</h3>
                         <img src={scene.img} alt="" />
                     </div>

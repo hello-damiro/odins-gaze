@@ -20,6 +20,8 @@ Ok, it's not find Waldo, its more like [hidden object game](https://en.wikipedia
 
 **Day 4**: Finished the game. But needs to add the features that will comply to the challenges. I ended up using `useReducer`. I feel I can do the code without using `useReducer`, but I use it anyway just for the sake of using it. I need to experience implementing these hooks for me to fully grasp it, specially the usecase of each hooks. Needs to finish the client side before I even attempt to start implementing the _BaaS_. Timer, game scene selection and pop-up modals/navigation. I'd probably start with the timer tomorrow since it has the direct connection with the game objects. Needs to focus more.
 
+**Day 5**: Need to remind myself that the purpose of the entire exercise is to make myself experience building an app that is mainly interacting with the backend for confirmation of what the user is doing. _(Challenge #4)_ There are hundred ways of building this kind of app, and I should stick with my purpose.
+
 </br>
 
 ## Hooks Used
