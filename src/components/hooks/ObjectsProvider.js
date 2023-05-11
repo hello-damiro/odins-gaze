@@ -2,12 +2,13 @@ import React, { createContext, useContext, useEffect, useReducer, useState } fro
 import { objectsReducer } from './ObjectsReducer';
 import { ACTIONS } from './ObjectsReducer';
 import { delay } from '../utils/delay';
-import { pickRandomNumbers } from '../utils/pickRandomNumbers';
+import { pickRandomIDs } from '../utils/pickRandomNumbers';
+import { db } from '../../config/firebase';
+import { getDocs, collection } from 'firebase/firestore';
 
 // Image should be strictly 1512 x 982 pixels
 // Scenes compilation data
 import { scenesData } from '../../data/Scenes';
-import { sceneData } from '../../data/SceneGarage';
 
 const ObjectsContext = createContext();
 const ObjectsContextUpdate = createContext();
@@ -31,25 +32,35 @@ function ObjectsProvider({ children }) {
     const [timer, setTimer] = useState(0);
     const [image, setImage] = useState(scenesData[0].img);
     const [scene, setScene] = useState(scenesData[0].img);
-    const [imageData, setImagedata] = useState({});
+    const [imageData, setImageData] = useState({});
 
     const [found, dispatch] = useReducer(objectsReducer, []);
-
-    const fetchScene = (scene) => {
-        console.log(scene.obj, scene.id);
-        setImagedata(scenesData); // Should be dynamically fetched
-    };
 
     useEffect(() => {
         fetchScene(scene);
     }, [scene]);
 
+    const fetchScene = async (scene) => {
+        setImage(scene.img);
+        const scenesCollectionRef = collection(db, `scenes/${scene.obj}/sceneData`);
+        try {
+            const rawData = await getDocs(scenesCollectionRef);
+            const data = rawData.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+            console.log(scene.obj, data);
+            setImageData(data);
+        } catch (error) {
+            console.error('Error fetching from Firestore:', error);
+        }
+    };
+
     const setGame = (on) => {
-        setImage(scenesData[0].img);
         if (on) {
-            const randomNumbers = pickRandomNumbers(3, imageData.length);
+            const randomIDs = pickRandomIDs(
+                imageData.map((object) => object.id),
+                3
+            );
             const filteredObjects = imageData.filter((object) => {
-                return randomNumbers.includes(object.id);
+                return randomIDs.includes(object.id);
             });
             const mapObjects = filteredObjects.map((object, index) => ({
                 id: index,
